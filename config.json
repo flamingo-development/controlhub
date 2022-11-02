@@ -1,0 +1,32 @@
+{
+    "inputs": {
+        "github": {
+            "token": "abc123",
+            "to": ["discord"]
+        },
+        "terraform": {
+            "token": "tfr",
+            "to": ["discord"],
+            "formatter": "./formatters/terraform-discord.js"
+        }
+    },
+
+    "cron": {
+        "boot": {
+            "time": "@reboot",
+            "data": {
+                "content": "booted up."
+            },
+            "to": ["discord"]
+        }
+    },
+
+    "outputs": {
+        "discord": {
+            "type": "generic",
+            "config": {
+                "url": "$env.DISCORD_URL"
+            }
+        }
+    }
+}
