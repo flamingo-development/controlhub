@@ -1,4 +1,7 @@
+#!/bin/sh
 
+echo Installing plugins...
 ./plugins/install.sh
 
-exec $@
+echo Starting ControlHub...
+eval $@
