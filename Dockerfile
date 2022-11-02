@@ -1,4 +1,4 @@
-FROM golang:1.19.3-alpine3.16 AS builder
+FROM golang:1.19.3 AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN go build -o control ./app/control/control.go
 
 # ---
 
-FROM golang:1.19.3-alpine3.16
+FROM golang
 
 WORKDIR /app
 
