@@ -1,0 +1,4 @@
+
+./plugins/install.sh
+
+exec $@

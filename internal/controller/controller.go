@@ -53,7 +53,7 @@ func (c *PluginController) Init() error {
 
 		plugin, err := plugin.Open("./plugins/" + f.Name())
 		if err != nil {
-			return err
+			continue
 		}
 
 		symPlugin, err := plugin.Lookup("Plugin")
@@ -66,7 +66,10 @@ func (c *PluginController) Init() error {
 			return errors.New("plugin does not implement control.Plugin")
 		}
 
-		c.plugins[plug.Info().Name] = plug
+		info := plug.Info()
+
+		fmt.Printf("Loaded plugin '%s:%s'\n", info.Name, info.Version)
+		c.plugins[info.Name] = plug
 	}
 
 	configBytes, err := os.ReadFile("./config.json")
