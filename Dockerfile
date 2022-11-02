@@ -1,5 +1,7 @@
 FROM golang:1.19.3 AS builder
 
+USER root
+
 WORKDIR /app
 
 COPY . .
