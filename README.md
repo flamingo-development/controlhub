@@ -17,6 +17,10 @@ The `install.sh` runs on each startup of the server to install any plugins you m
 
 If not given, the application will use the default thats already provided in the project.
 
+As for the locations that the files need to be placed in:
+- `config.json` needs to be placed in `/app/config.json`
+- `install.sh` needs to be placed in `/app/plugins/install.sh`
+
 ### config.json
 
 The config.json file is used to define your webhook endpoints, cronjobs and outputs.
