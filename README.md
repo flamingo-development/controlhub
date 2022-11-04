@@ -102,11 +102,14 @@ This is useful for sending a webhook to a service that does not have a plugin fo
 The config for this plugin is as follows:
 
 ```json
-{
-    "url": "$env.WEBHOOK_URL",
-    "headers": {
-        "Authorization": "Bearer $env.WEBHOOK_TOKEN",
-        "X-Other-Header": "value"
+"output-name": {
+    "type": "generic",
+    "config": {
+        "url": "$env.WEBHOOK_URL",
+        "headers": {
+            "Authorization": "Bearer $env.WEBHOOK_TOKEN",
+            "X-Other-Header": "value"
+        }
     }
 }
 ```
