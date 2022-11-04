@@ -11,5 +11,6 @@ require (
 	github.com/dlclark/regexp2 v1.7.0 // indirect
 	github.com/dop251/goja v0.0.0-20221025165401-cb5011b539fe // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
+	github.com/jason0x43/go-toggl v0.0.0-20210518224841-9af0e37bf5f1 // indirect
 	golang.org/x/text v0.3.7 // indirect
 )

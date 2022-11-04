@@ -117,3 +117,33 @@ The config for this plugin is as follows:
     }
 }
 ```
+
+# Toggl Plugin
+
+The toggl plugin can be used to start or stop a timer in toggl.
+This plugin requires the toggl api token to be added in the config.
+The plugin requires one of 2 strings as action: `start` or `stop`.
+
+The action variable can also be overriden by using the `action` field in the data sent to the output as a json object.
+This can be done as followed:
+
+```json
+{
+    "action": "start",
+    "description": "description of the timer"
+}
+```
+
+The config for this plugin is as follows:
+
+```json
+"output-name": {
+    "type": "toggl",
+    "config": {
+        "api_token": "$env.TOGGL_TOKEN",
+        "description": "Description of the timer",
+        "action": "start",
+    }
+}
+```
+
