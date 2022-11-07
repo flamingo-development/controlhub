@@ -1,0 +1,49 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controlhub
+  namespace: controlhub
+  labels:
+    app: controlhub
+spec:
+  selector:
+    matchLabels:
+      app: pod-controlhub
+  template:
+    metadata:
+      labels:
+        app: pod-controlhub
+    spec:
+      containers:
+        - name: container-controlhub
+          image: #! url to built controlhub image
+          env:
+            - name: TZ # Set timezone to run cronjobs at the correct time
+              value: Europe/Amsterdam
+
+            - name: WEBHOOK_TOKEN # Set the token for a webhook
+              valueFrom:
+                secretKeyRef:
+                  name: controlhub-secret
+                  key: token
+            - name: WEBHOOK_URL # Set the url for an output
+              valueFrom:
+                secretKeyRef:
+                  name: controlhub-secret
+                  key: url
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.json
+              subPath: config.json
+
+            - name: config-volume
+              mountPath: /app/plugins/install.sh
+              subPath: install.sh
+
+      volumes:
+        - name: config-volume
+          configMap:
+            name: controlhub-config
+            defaultMode: 0777 # in order to make the install.sh runnable
